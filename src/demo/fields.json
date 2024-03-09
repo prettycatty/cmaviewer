@@ -1,0 +1,77 @@
+[
+	{
+		"name": "property_type",
+		"nice_name": "Property Type",
+		"type": "removable"
+	},
+	{
+		"name": "address",
+		"nice_name": "Address",
+		"type": "fixed"
+	},
+	{
+		"name": "city",
+		"nice_name": "City",
+		"type": "fixed"
+	},
+	{
+		"name": "state",
+		"nice_name": "State",
+		"type": "fixed"
+	},
+	{
+		"name": "school_district",
+		"nice_name": "School District",
+		"type": "removable"
+	},
+	{
+		"name": "status",
+		"nice_name": "Status",
+		"type": "removable"
+	},
+	{
+		"name": "list_price",
+		"nice_name": "List Price",
+		"type": "fixed"
+	},
+	{
+		"name": "listdate",
+		"nice_name": "List Date",
+		"type": "removable"
+	},
+	{
+		"name": "above_area",
+		"nice_name": "Above Sq.Ft.",
+		"type": "removable"
+	},
+	{
+		"name": "lot_size",
+		"nice_name": "Lot Size",
+		"type": "removable"
+	},
+	{
+		"name": "year_built",
+		"nice_name": "Year Built",
+		"type": "removable"
+	},
+	{
+		"name": "bedrooms",
+		"nice_name": "Bedrooms",
+		"type": "removable"
+	},
+	{
+		"name": "fireplaces",
+		"nice_name": "Fireplaces",
+		"type": "removable"
+	},
+	{
+		"name": "listdate",
+		"nice_name": "DOM",
+		"type": "removable"
+	},
+	{
+		"name": "notes",
+		"nice_name": "Notes",
+		"type": "removable"
+	}
+]

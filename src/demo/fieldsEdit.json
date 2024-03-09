@@ -1,0 +1,228 @@
+[
+	{
+		"name": "source_id",
+		"nice_name": "Source ID",
+		"type": "removable",
+		"isAdjustable": false,
+		"editableInSubject": true,
+		"editableField": false,
+		"controlType": "string"
+	},
+	{
+		"name": "property_type",
+		"nice_name": "Property Type",
+		"type": "removable",
+		"isAdjustable": false,
+		"editableInSubject": true,
+		"editableField": false,
+		"controlType": "string"
+	},
+	{
+		"name": "address",
+		"nice_name": "Address",
+		"type": "fixed",
+		"isAdjustable": false,
+		"editableInSubject": true,
+		"editableField": false,
+		"controlType": "string"
+	},
+	{
+		"name": "city",
+		"nice_name": "City",
+		"type": "fixed",
+		"isAdjustable": false,
+		"editableInSubject": true,
+		"editableField": false,
+		"controlType": "string"
+	},
+	{
+		"name": "state",
+		"nice_name": "State",
+		"type": "fixed",
+		"isAdjustable": false,
+		"editableInSubject": true,
+		"editableField": false,
+		"controlType": "string"
+	},
+	{
+		"name": "school_district",
+		"nice_name": "School District",
+		"type": "removable",
+		"isAdjustable": false,
+		"editableInSubject": true,
+		"editableField": false,
+		"controlType": "string"
+	},
+	{
+		"name": "status",
+		"nice_name": "Status",
+		"type": "removable",
+		"isAdjustable": false,
+		"editableInSubject": false,
+		"editableField": false,
+		"controlType": "dropdown",
+		"values": [
+			{
+				"value": "Active",
+				"label": "Active"
+			},
+			{
+				"value": "Sold",
+				"label": "Sold"
+			}
+		]
+	},
+	{
+		"name": "list_price",
+		"nice_name": "List Price",
+		"type": "fixed",
+		"isAdjustable": false,
+		"editableInSubject": true,
+		"editableField": false,
+		"controlType": "string"
+	},
+	{
+		"name": "sold_price",
+		"nice_name": "Sold Price",
+		"type": "removable",
+		"isAdjustable": false,
+		"editableInSubject": false,
+		"editableField": false,
+		"controlType": "string"
+	},
+	{
+		"name": "listdate",
+		"nice_name": "List Date",
+		"type": "removable",
+		"isAdjustable": false,
+		"editableInSubject": false,
+		"editableField": false,
+		"controlType": "string"
+	},
+	{
+		"name": "solddate",
+		"nice_name": "Sold Date",
+		"type": "removable",
+		"isAdjustable": false,
+		"editableInSubject": false,
+		"editableField": false,
+		"controlType": "string"
+	},
+	{
+		"name": "dom",
+		"nice_name": "DOM",
+		"type": "removable",
+		"isAdjustable": false,
+		"editableInSubject": false,
+		"editableField": false,
+		"controlType": "string"
+	},
+	{
+		"name": "adjust",
+		"nice_name": "Adj Amt",
+		"type": "none",
+		"isAdjustable": false,
+		"editableInSubject": false,
+		"editableField": false,
+		"controlType": "string"
+	},
+	{
+		"name": "above_area",
+		"nice_name": "Above Sq.Ft.",
+		"type": "removable",
+		"isAdjustable": true,
+		"editableInSubject": true,
+		"editableField": false,
+		"controlType": "string"
+	},
+	{
+		"name": "lot_size",
+		"nice_name": "Lot Size",
+		"type": "removable",
+		"isAdjustable": true,
+		"editableInSubject": true,
+		"editableField": false,
+		"controlType": "string"
+	},
+	{
+		"name": "year_built",
+		"nice_name": "Year Built",
+		"type": "removable",
+		"isAdjustable": true,
+		"editableInSubject": true,
+		"editableField": false,
+		"controlType": "string"
+	},
+	{
+		"name": "bedrooms",
+		"nice_name": "Bedrooms",
+		"type": "removable",
+		"isAdjustable": true,
+		"editableInSubject": true,
+		"editableField": false,
+		"controlType": "string"
+	},
+	{
+		"name": "fireplaces",
+		"nice_name": "Fireplaces",
+		"type": "removable",
+		"isAdjustable": true,
+		"editableInSubject": true,
+		"editableField": false,
+		"controlType": "string"
+	},
+	{
+		"name": "new1",
+		"nice_name": "",
+		"type": "removable",
+		"isAdjustable": true,
+		"editableInSubject": true,
+		"editableField": true,
+		"controlType": "string"
+	},
+	{
+		"name": "new2",
+		"nice_name": "",
+		"type": "removable",
+		"isAdjustable": true,
+		"editableInSubject": true,
+		"editableField": true,
+		"controlType": "string"
+	},
+	{
+		"name": "new3",
+		"nice_name": "",
+		"type": "removable",
+		"isAdjustable": true,
+		"editableInSubject": true,
+		"editableField": true,
+		"controlType": "string"
+	},
+	{
+		"name": "notes",
+		"nice_name": "Notes",
+		"type": "removable",
+		"isAdjustable": false,
+		"editableInSubject": true,
+		"editableField": false,
+		"controlType": "string"
+	},
+	{
+		"name": "total_adj",
+		"nice_name": "Total Adjustments",
+		"type": "fixed",
+		"isAdjustable": false,
+		"editableInSubject": false,
+		"editableField": false,
+		"controlType": "string"
+	},
+	{
+		"name": "adj_price",
+		"nice_name": "Adjusted Price",
+		"type": "fixed",
+		"isAdjustable": false,
+		"editableInSubject": false,
+		"editableField": false,
+		"controlType": "string"
+	}
+]
