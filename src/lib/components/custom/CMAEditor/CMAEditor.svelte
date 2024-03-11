@@ -3,7 +3,7 @@
 	import { Label } from "$lib/components/ui/label";
 	import { Button } from "$lib/components/ui/button";
 	import { Textarea } from "$lib/components/ui/textarea";
-	import { dndzone, SHADOW_ITEM_MARKER_PROPERTY_NAME } from 'svelte-dnd-action';
+	import { dndzone, SOURCES, TRIGGERS, SHADOW_ITEM_MARKER_PROPERTY_NAME } from 'svelte-dnd-action';
 
 	import ConfirmationModal from "$lib/components/common/Confirmation Modal/ConfirmationModal.svelte";
 	import ListingCardEdit from '$lib/components/custom/ListingCardEdit/ListingCardEdit.svelte';
@@ -52,6 +52,8 @@
 
 	// Control Menu Instance
 	let controlMenuRef: any;
+
+	let dragDisabled: boolean = true;
 	///////////////////////////////////////////////////	Handlers
 	// TODO
 	const saveAll = () => {
@@ -88,6 +90,10 @@
 			},
 			fields: CMA.fields
 		};
+		
+		if (e.detail.info.source === SOURCES.KEYBOARD && e.detail.info.trigger === TRIGGERS.DRAG_STOPPED) {
+			dragDisabled = true;
+		}
 	};
 
 	// Define activity when we end Drag and Drop Listing. Essential!
@@ -103,7 +109,16 @@
 			},
 			fields: CMA.fields
 		};
-	}
+
+		if (e.detail.info.source === SOURCES.POINTER) {
+			dragDisabled = true;
+		}
+	};
+
+	// Handler to start Drag
+	const startDrag = () => {
+		dragDisabled = false;
+	};
 
 	// Handler to hide/show Report Adjustments
 	const toggleHideReportAdjustments = () => hideReportAdjustments = !hideReportAdjustments;
@@ -471,7 +486,7 @@
 		<!-- listings-body -->
 		<section class="flex flex-1 sm:ml-[360px] lg:ml-[500px] p-[5px]" 
 			style="mouse-wheel:horizontal;"
-			use:dndzone={{items: CMA.detail.listings, flipDurationMs}} 
+			use:dndzone={{items: CMA.detail.listings, dragDisabled, flipDurationMs}} 
 			on:consider={handleConsider} 
 			on:finalize={handleFinalize}
 		>
@@ -485,6 +500,8 @@
 						removeListingHandler={removeListingHandlerWrapper} 
 						iListing={iListing} 
 						hideReportAdjustments={hideReportAdjustments} 
+						startDrag={startDrag}
+						dragDisabled={dragDisabled}
 					/>		
 				</div>	
 			{/each}

@@ -9,6 +9,8 @@
     export let removeListingHandler: Function;
     export let makeSubject: Function;
     export let updateListingField: Function;
+    export let startDrag: Function;
+    export let dragDisabled: boolean;
     export let iListing: number;
     export let listing: any;
     export let fields: any;
@@ -73,6 +75,14 @@
                   </DropdownMenu.Item>
                 </DropdownMenu.Content>
             </DropdownMenu.Root>
+            <!-- svelte-ignore a11y-no-static-element-interactions -->
+            <div 
+              style={dragDisabled ? 'cursor: grab' : 'cursor: grabbing'}
+              on:mousedown={() => startDrag()} 
+              on:touchstart={() => startDrag()}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24"><path fill="currentColor" d="M18 11V8l4 4l-4 4v-3h-5v5h3l-4 4l-4-4h3v-5H6v3l-4-4l4-4v3h5V6H8l4-4l4 4h-3v5z"/></svg>
+            </div>
         </div>
         <div class="bg-cover w-full h-[130px] lg:h-[150px]" style={`background: url(${listing.photo_url? listing.photo_url: "assets/images/empty.png"}); background-size: cover;`}></div>
         <div class="flex flex-col items-start justify-start gap-[15px]">
