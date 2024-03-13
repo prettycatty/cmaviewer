@@ -23,5 +23,5 @@
 </script>
    
 <div class="bg-primary text-primary-foreground flex flex-col gap-[50px] w-full min-h-screen px-[10px] py-[20px] sm:p-[20px] text-[15px]" style="font-family: Arial, Helvetica, sans-serif;">
-    <CMAEditor CMA={CMA} originCMA={CMA} />
+    <CMAEditor CMA={CMA} originFields={CMA.fields} />
 </div>

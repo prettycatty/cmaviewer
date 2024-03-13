@@ -20,7 +20,7 @@
 	// Represent Current Grid Info
     export let CMA: any;
 	// Represent Origin Grid Info without any change
-	export let originCMA: any;
+	export let originFields: any;
 
 	// Subject Property Content
 	let Subject_Data: any = {
@@ -310,52 +310,49 @@
 		}
 	};
 
-	// Handler to update Adjustment Price of Subject Column. This is used when we edit list price on Subject Column.
-	const updateSubjectTotalAdjust = () => {
+
+	const getAdjInfoFromListing = (listing: any) => {
 		let total_adj = 0;
-		let keys = Object.keys(Subject_Data);
+		let keys = Object.keys(listing);
 
 		for (let i = 0; i < keys.length; i++) {
-			if (typeof Subject_Data[keys[i]] === "object") {
-				total_adj += parseFloat(Subject_Data[keys[i]].adjAmount == ""? "0": Subject_Data[keys[i]].adjAmount);
+			if (typeof listing[keys[i]] === "object") {
+				total_adj += parseFloat(listing[keys[i]].adjAmount == ""? "0": listing[keys[i]].adjAmount);
 			}
 		}
 
-		Subject_Data["total_adj"] = total_adj.toString();
-
-		if (Subject_Data["sold_price"] == undefined) {
-			Subject_Data["adj_price"] = (total_adj > 0)? (parseFloat(Subject_Data["list_price"]) + total_adj).toString(): (parseFloat(Subject_Data["list_price"]) - total_adj).toString();
+		if (listing["sold_price"] == undefined) {
+			return  {
+				total_adj: total_adj.toString(),
+				adj_price: (total_adj > 0)? (parseFloat(listing["list_price"]) + total_adj).toString(): (parseFloat(listing["list_price"]) - total_adj).toString()
+			};
 		} else {
-			if (!isNaN(Subject_Data["sold_price"])) {
-				Subject_Data["adj_price"] = (total_adj > 0)? (parseFloat(Subject_Data["sold_price"]) + total_adj).toString(): (parseFloat(Subject_Data["sold_price"]) - total_adj).toString();
+			if (!isNaN(listing["sold_price"])) {
+				return  {
+					total_adj: total_adj.toString(),
+					adj_price: (total_adj > 0)? (parseFloat(listing["sold_price"]) + total_adj).toString(): (parseFloat(listing["sold_price"]) - total_adj).toString()
+				};
 			} else {
-				Subject_Data["adj_price"] = (total_adj > 0)? (parseFloat(Subject_Data["list_price"]) + total_adj).toString(): (parseFloat(Subject_Data["list_price"]) - total_adj).toString();
+				return  {
+					total_adj: total_adj.toString(),
+					adj_price: (total_adj > 0)? (parseFloat(listing["list_price"]) + total_adj).toString(): (parseFloat(listing["list_price"]) - total_adj).toString()
+				};
 			}
 		}
 	};
 
+	// Handler to update Adjustment Price of Subject Column. This is used when we edit list price on Subject Column.
+	const updateSubjectTotalAdjust = () => {
+		let adjInfo = getAdjInfoFromListing(Subject_Data);
+		Subject_Data["total_adj"] = adjInfo.total_adj;
+		Subject_Data["adj_price"] = adjInfo.adj_price;
+	};
+
 	// Handler to update Total Adjustment and Adjusted Price of given Listing
 	const updateTotalAdjust = (iListing: number) => {
-		let total_adj = 0;
-		let keys = Object.keys(CMA.detail.listings[iListing]);
-
-		for (let i = 0; i < keys.length; i++) {
-			if (typeof CMA.detail.listings[iListing][keys[i]] === "object") {
-				total_adj += parseFloat(CMA.detail.listings[iListing][keys[i]].adjAmount == ""? "0": CMA.detail.listings[iListing][keys[i]].adjAmount);
-			}
-		}
-
-		CMA.detail.listings[iListing]["total_adj"] = total_adj.toString();
-
-		if (CMA.detail.listings[iListing]["sold_price"] == undefined) {
-			CMA.detail.listings[iListing]["adj_price"] = (total_adj > 0)? (parseFloat(CMA.detail.listings[iListing]["list_price"]) + total_adj).toString(): (parseFloat(CMA.detail.listings[iListing]["list_price"]) - total_adj).toString();
-		} else {
-			if (!isNaN(CMA.detail.listings[iListing]["sold_price"]) && CMA.detail.listings[iListing]["sold_price"] != "") {
-				CMA.detail.listings[iListing]["adj_price"] = (total_adj > 0)? (parseFloat(CMA.detail.listings[iListing]["sold_price"]) + total_adj).toString(): (parseFloat(CMA.detail.listings[iListing]["sold_price"]) - total_adj).toString();
-			} else {
-				CMA.detail.listings[iListing]["adj_price"] = (total_adj > 0)? (parseFloat(CMA.detail.listings[iListing]["list_price"]) + total_adj).toString(): (parseFloat(CMA.detail.listings[iListing]["list_price"]) - total_adj).toString();
-			}
-		}
+		let adjInfo = getAdjInfoFromListing(CMA.detail.listings[iListing]);
+		CMA.detail.listings[iListing]["total_adj"] = adjInfo.total_adj;
+		CMA.detail.listings[iListing]["adj_price"] = adjInfo.adj_price;
 	};
 	
 	// Handler to edit Field of Listing
@@ -400,7 +397,7 @@
 				title: CMA.detail.title,
 				listings: CMA.detail.listings
 			},
-			fields: originCMA.fields
+			fields: originFields
 		};
 	};
 
